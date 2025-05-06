@@ -1,36 +1,41 @@
-# DNN-Based Groundwater Pollution Classification
+# GBRT-Based Groundwater Pollution Classification
 
-This script uses Deep Neural Networks (DNNs) to classify groundwater pollution levels based on 20 heavy metal concentrations, integrating the Chinese Groundwater Quality Standard (GB/T 14848-2017).
+This script applies a Gradient Boosting Classifier to assess groundwater pollution based on integrated inorganic and organic contamination levels.
 
 ## Features
 
-- Classifies pollutants into pollution grades using national standards
-- Trains a DNN model to predict pollution level from heavy metal data
-- Visualizes loss curves, feature importance, prediction performance, and 3D spatial distribution
-- Exports final classification result for all sites
+- Integrates rule-based and data-driven classification logic
+- Uses GBRT for supervised multi-class classification (4 pollution levels)
+- Outputs performance metrics, decision tree visualizations, ROC curves, and learning curves
+- Saves prediction results in a CSV file
 
 ## Requirements
 
 - Python 3.7+
-- Libraries: pandas, numpy, matplotlib, seaborn, sklearn, keras
+- Libraries: pandas, matplotlib, sklearn, numpy, shap
 
 Install with:
 
 ```bash
-pip install pandas numpy matplotlib seaborn scikit-learn keras
+pip install pandas matplotlib scikit-learn shap numpy
 ```
 
 ## How to Use
 
-1. Place your data file `Groundwater pollution data DNN.csv` in the same directory.
+1. Place your file `pollution_data.csv` in the directory.
 2. Run the script:
 
 ```bash
-python dnn_groundwater_classifier.py
+python gbrt_pollution_classifier.py
 ```
 
-3. Output: `final_pollution_classification.csv` and related plots will be generated.
+3. Output: `pollution_level_results.csv`, plots for ROC, learning curve, and decision trees.
+
+## Input Data Format
+
+- A CSV file with columns: `inorganic`, `organic`
+- Pollution levels will be computed using predefined rules
 
 ## Citation
 
-Refer to Supplementary Methods 5 for model workflow and pollution grading thresholds.
+Refer to Supplementary Methods 8 in the paper for detailed method logic.
