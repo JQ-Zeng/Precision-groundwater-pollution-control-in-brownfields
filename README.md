@@ -1,41 +1,43 @@
-# GBRT-Based Groundwater Pollution Classification
+# DMVC: Deep Multi-View Clustering for Groundwater Pollution Analysis
 
-This script applies a Gradient Boosting Classifier to assess groundwater pollution based on integrated inorganic and organic contamination levels.
+This script applies a Deep Multi-View Clustering (DMVC) model to integrate and analyze five types of multi-source data: land use, hydrochemistry, vulnerability, mobility, and pollution grade.
 
 ## Features
 
-- Integrates rule-based and data-driven classification logic
-- Uses GBRT for supervised multi-class classification (4 pollution levels)
-- Outputs performance metrics, decision tree visualizations, ROC curves, and learning curves
-- Saves prediction results in a CSV file
+- Uses a deep encoder to extract latent representations from multi-view data
+- Applies KMeans clustering in the latent space
+- Outputs cluster assignments and feature summaries
+- Visualizes results with PCA
 
 ## Requirements
 
 - Python 3.7+
-- Libraries: pandas, matplotlib, sklearn, numpy, shap
+- Libraries: pandas, numpy, matplotlib, scikit-learn, tensorflow
 
-Install with:
+Install dependencies:
 
 ```bash
-pip install pandas matplotlib scikit-learn shap numpy
+pip install pandas numpy matplotlib scikit-learn tensorflow
 ```
 
 ## How to Use
 
-1. Place your file `pollution_data.csv` in the directory.
+1. Place your file `Groundwater class.csv` in the directory.
 2. Run the script:
 
 ```bash
-python gbrt_pollution_classifier.py
+python dmvc_multiview_clustering.py
 ```
 
-3. Output: `pollution_level_results.csv`, plots for ROC, learning curve, and decision trees.
+3. Outputs:
+- `pollution_repair_clusters.csv` – cluster assignment for each sample
+- `cluster_summary.csv` – average view features per cluster
+- PCA plot of cluster separation
 
-## Input Data Format
+## Input Format
 
-- A CSV file with columns: `inorganic`, `organic`
-- Pollution levels will be computed using predefined rules
+CSV with columns: `vulnerability`, `mobility`, `hydrochemistry`, `land use`, `pollution`.
 
 ## Citation
 
-Refer to Supplementary Methods 8 in the paper for detailed method logic.
+See Supplementary Methods 9 in the original article for full explanation of DMVC model logic.
