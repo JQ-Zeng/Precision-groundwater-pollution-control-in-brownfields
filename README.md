@@ -1,41 +1,36 @@
-# SOM-KM Clustering for Groundwater Hydrogeochemistry
+# DNN-Based Groundwater Pollution Classification
 
-This R script implements the Self-Organizing Map (SOM) combined with K-means clustering (SOM-KM) method to analyze and spatially cluster hydrogeochemical data from 379 monitoring wells.
+This script uses Deep Neural Networks (DNNs) to classify groundwater pollution levels based on 20 heavy metal concentrations, integrating the Chinese Groundwater Quality Standard (GB/T 14848-2017).
 
 ## Features
 
-- Trains a SOM using 14 hydrogeochemical variables
-- Applies K-means to the SOM codebook vectors
-- Visualizes component planes, mapping results, and cluster boundaries
-- Exports cluster assignment for each sample
+- Classifies pollutants into pollution grades using national standards
+- Trains a DNN model to predict pollution level from heavy metal data
+- Visualizes loss curves, feature importance, prediction performance, and 3D spatial distribution
+- Exports final classification result for all sites
 
 ## Requirements
 
-- R
-- Packages: `kohonen`
+- Python 3.7+
+- Libraries: pandas, numpy, matplotlib, seaborn, sklearn, keras
 
-Install required package if not already installed:
+Install with:
 
-```R
-install.packages("kohonen")
+```bash
+pip install pandas numpy matplotlib seaborn scikit-learn keras
 ```
 
 ## How to Use
 
-1. Place your data file named `Groundwater chemical data.csv` in the working directory.
+1. Place your data file `Groundwater pollution data DNN.csv` in the same directory.
 2. Run the script:
 
-```R
-source("som_km_clustering.R")
+```bash
+python dnn_groundwater_classifier.py
 ```
 
-3. Output: `sample_clusters_with_ID.csv` will be generated.
-
-## Input Data Format
-
-- CSV file with 1st column as sample ID, and columns 2 to 15 as numeric variables.
-- No missing values.
+3. Output: `final_pollution_classification.csv` and related plots will be generated.
 
 ## Citation
 
-Refer to Supplementary Methods 4 in the main article for full parameter setup and explanation.
+Refer to Supplementary Methods 5 for model workflow and pollution grading thresholds.
